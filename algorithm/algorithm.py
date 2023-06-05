@@ -1,6 +1,7 @@
 import random
 from abc import abstractmethod
 
+TARGET_STATE = [1, 2, 3, 8, 0, 4, 6, 5, 7]
 
 def gen_state():
     state = []
@@ -34,9 +35,28 @@ def find_children(state):
     return result
 
 
+class Node:
+    parent = None
+    state = []
+    children = []
+
+    def __int__(self, state, parent=None):
+        self.state = state
+        self.parent = parent
+        self.children = []
+
+    def add_child(self, node):
+        self.children.append(node)
+
+    def is_target(self):
+        return self.sate == TARGET_STATE
+
+
 class Algorithm:
     start_state = []
-    target_state = [1, 2, 3, 8, 0, 4, 6, 5, 7]
+
+    open_list = []
+    closed_list = []
 
     def __int__(self):
         self.start_state = gen_state()
@@ -45,12 +65,9 @@ class Algorithm:
     def solve(self):
         pass
 
-
     @abstractmethod
     def step(self):
         pass
-
-
 
 
 _state = gen_state()
@@ -58,3 +75,5 @@ print_state(_state)
 children = find_children(_state)
 for ch in children:
     print_state(ch)
+node = Node(TARGET_STATE)
+print(node.is_target())
