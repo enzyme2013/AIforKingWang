@@ -46,6 +46,14 @@ class Node:
             result.append(n)
         return result
 
+
+    def manhattan(self):
+        state = self.index(self.state)
+        goal = self.index(np.arange(9))
+        return sum((abs(state // 3 - goal // 3) + abs(state % 3 - goal % 3))[1:])
+    def hamming_distance(self, array):
+        return 0
+
     def equal(self, node):
         return np.array_equal(self.state, node.state)
 
