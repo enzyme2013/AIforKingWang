@@ -21,9 +21,10 @@ class AStar(Algorithm):
             if cur_node.equal(target_node):
                 return cur_node
             neighbors = cur_node.neighbors()
-            for node in neighbors:
+            sortlist = sorted(neighbors, key=lambda neighbor: neighbor.manhattan(target_node))
+            sortlist.reverse()
+            for node in sortlist:
                 if tuple(node.state) not in visited:
                     frontier.append(node)
                     visited.add(tuple(node.state))
-
         return None

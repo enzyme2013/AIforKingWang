@@ -28,6 +28,8 @@ def neighbors(state):
 class Node:
     parent = None
     state = []
+    g = 0
+    h = 0
 
     # children = []
 
@@ -43,14 +45,16 @@ class Node:
         for st in _list:
             n = Node(st)
             n.parent = self
+            n.g = self.g + 1
             result.append(n)
         return result
 
+    def manhattan(self, target):
+        h = 0
+        for i in range(0, 9):
+            h += abs(target.state[i] / 3 - self.state[i] / 3) + abs(target.state[i] % 3 - self.state[i] % 3)
+        return h
 
-    def manhattan(self):
-        state = self.index(self.state)
-        goal = self.index(np.arange(9))
-        return sum((abs(state // 3 - goal // 3) + abs(state % 3 - goal % 3))[1:])
     def hamming_distance(self, array):
         return 0
 
@@ -60,7 +64,6 @@ class Node:
     def __hash__(self):
         r = hash(tuple(self.state))
         return r
-
 
 # no = Node([1, 2, 3, 4, 5, 6, 7, 8, 0])
 # print(no)
