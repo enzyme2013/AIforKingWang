@@ -1,5 +1,6 @@
 import numpy as np
-
+from scipy.stats import kurtosis
+from scipy.stats import skew
 
 def print_state(state):
     print()
@@ -60,8 +61,27 @@ class Node:
         for i in range(0, 9):
             target_num = target.state[i]
             index = self.state.index(target_num)
-            h += abs(int(index / 3) - int(i / 3)) + abs(index % 3 - i % 3)
+            h += 10*(abs(int(index / 3) - int(i / 3)) + abs(index % 3 - i % 3))
         return h
+
+    def manhattan2(self, target):
+        h = 0
+        for i in range(0, 9):
+            target_num = target.state[i]
+            index = self.state.index(target_num)
+            h += 10*(abs(index / 3 - i / 3) + abs(index % 3 - i % 3))
+        return h
+
+    def kurtosis(self, target):
+        h = []
+        for i in range(0, 9):
+            target_num = target.state[i]
+            index = self.state.index(target_num)
+            h.append(abs(int(index / 3) - int(i / 3)) + abs(index % 3 - i % 3))
+        if len(h) == 0:
+            print("DEBUG")
+        r = skew(h, axis=0, bias=True)
+        return r
 
     def hamming_distance(self, array):
         return 0
