@@ -1,3 +1,4 @@
-pygame
+pygame~=2.4.0
 pygame-gui
-thorpy
+thorpy~=2.0.4
+numpy~=1.24.3
