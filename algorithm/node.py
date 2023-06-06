@@ -49,10 +49,18 @@ class Node:
             result.append(n)
         return result
 
+    # def manhattan(self, target):
+    #     h = 0
+    #     for i in range(0, 9):
+    #         h += abs(target.state[i] / 3 - self.state[i] / 3) + abs(target.state[i] % 3 - self.state[i] % 3)
+    #     return h
+
     def manhattan(self, target):
         h = 0
         for i in range(0, 9):
-            h += abs(target.state[i] / 3 - self.state[i] / 3) + abs(target.state[i] % 3 - self.state[i] % 3)
+            target_num = target.state[i]
+            index = self.state.index(target_num)
+            h += abs(int(index / 3) - int(i / 3)) + abs(index % 3 - i % 3)
         return h
 
     def hamming_distance(self, array):
