@@ -1,25 +1,18 @@
 from abc import abstractmethod
-import utils
-from node import Node
+from algorithm import utils
+from algorithm.node import Node
 
 
 class Algorithm:
-    start_state:Node = None
-    open_list = []
-    closed_list = []
+    # start_state:Node = None
+    # open_list = []
+    # closed_list = []
 
-    def __int__(self, init_state=None):
-        if init_state:
-            self.start_state = Node(init_state)
-        else:
-            self.start_state = Node(utils.random_state())
+    # def __int__(self, init_state=None):
 
-    def solve(self, target_state, start_node=None):
+    def solve(self, start_state, target_state):
         pass
 
     @abstractmethod
     def step(self):
         pass
-
-
-

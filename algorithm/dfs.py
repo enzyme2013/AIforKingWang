@@ -1,5 +1,5 @@
 from algorithm import Algorithm, utils
-from node import Node
+from algorithm.node import Node
 
 
 class DFS(Algorithm):
@@ -7,9 +7,13 @@ class DFS(Algorithm):
     def __int__(self, init_state=None):
         super(DFS, init_state)
 
-    def solve(self, target_node, start_node=None):
-        if start_node is None:
+    def solve(self, target_state, start_state=None):
+        start_node = None
+        if start_state is None:
             start_node = Node(utils.random_state())
+        else:
+            start_node = Node(start_state)
+        target_node = Node(target_state)
         print(f"try to solve from:\n{start_node} to \n{target_node}")
         lastNode = self.dfs(start_node, target_node)
         paths = [lastNode]
@@ -38,10 +42,3 @@ class DFS(Algorithm):
         pass
 
 
-dfs = DFS()
-paths = dfs.solve(Node([1, 2, 3, 8, 0, 4, 7, 6, 5]))
-# , Node([1,2,3,8,4,0,7,6,5]))
-print('=========================')
-for n in paths:
-    print(n)
-print(f"total steps:{len(paths)}")
