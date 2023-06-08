@@ -2,17 +2,19 @@ from algorithm import AStar
 from algorithm.utils import random_state
 
 
-def test_alg(alg, start_state, end_state):
+def test_solver(alg, start_state, end_state):
     paths = alg.solve(start_state, end_state)
     return len(paths)
 
 
-def test_algs(algs):
+def test_solvers(solvers):
     start_state = random_state()
-    end_state = random_state()
+    end_state = [1,2,3,4,5,6,7,8,0]
     r = []
-    for alg in algs:
-        r.append(test_alg(alg, start_state, end_state))
+    for alg in solvers:
+        r.append(test_solver(alg, start_state, end_state))
+    if min(r) < 50:
+        print(start_state)
     return r
 
 
@@ -22,9 +24,10 @@ def gen_AStar(alg_type):
     return astar
 
 
-algs = [gen_AStar(1), gen_AStar(2), gen_AStar(3), gen_AStar(4)]
-for i in range(10):
-    r = test_algs(algs)
+# solvers = [gen_AStar(1), gen_AStar(2), gen_AStar(3), gen_AStar(4), gen_AStar(5), gen_AStar(6)]
+solvers = [gen_AStar(1), gen_AStar(2), gen_AStar(4), gen_AStar(5), gen_AStar(6)]
+for i in range(20):
+    r = test_solvers(solvers)
     print(r)
 
 # [41798, 1742, 140222, 46]

@@ -1,7 +1,7 @@
-from algorithm import Algorithm, utils
+from algorithm import PuzzleSolver, utils
 
 
-class BFS(Algorithm):
+class BFS(PuzzleSolver):
 
     def algorithm_func(self, start_node, target_node):
         frontier = [start_node]

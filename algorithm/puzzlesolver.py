@@ -2,7 +2,7 @@ from algorithm import utils
 from algorithm.node import Node
 
 
-class Algorithm:
+class PuzzleSolver:
     def solve(self, target_state, start_state=None):
         if start_state is None:
             start_node = Node(utils.random_state())
