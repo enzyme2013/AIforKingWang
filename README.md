@@ -13,8 +13,8 @@
  - [x] manhattan distance
  - [x] euclidean distance
  - [x] missed cols and rows
- - [ ] linear conflict
- - [ ] gaschnig heruistic
+ - [x] linear conflict
+ - [x] gaschnig heruistic
  - [ ] pattern database
 4. benchmark
  - [ ] benchmark
