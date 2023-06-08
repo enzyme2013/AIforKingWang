@@ -1,9 +1,9 @@
 from algorithm import Algorithm, utils
 
+
 class BFS(Algorithm):
 
-    @staticmethod
-    def alogrithm_func(start_node, target_node):
+    def algorithm_func(self, start_node, target_node):
         frontier = [start_node]
         visited = set()
         while frontier:
@@ -17,8 +17,4 @@ class BFS(Algorithm):
                     frontier.append(node)
                     visited.add(tuple(node.state))
         return None
-
-    def step(self):
-        pass
-
 

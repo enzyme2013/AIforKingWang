@@ -1,7 +1,6 @@
 import numpy as np
 import random
 
-
 def random_state():
     state = []
     for i in range(0, 9):

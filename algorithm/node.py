@@ -1,9 +1,5 @@
 import numpy as np
-from scipy.stats import kurtosis
-from scipy.stats import skew
 
-def print_state(state):
-    print()
 
 
 def neighbors(state):
@@ -50,19 +46,42 @@ class Node:
             result.append(n)
         return result
 
-    # def manhattan(self, target):
-    #     h = 0
-    #     for i in range(0, 9):
-    #         h += abs(target.state[i] / 3 - self.state[i] / 3) + abs(target.state[i] % 3 - self.state[i] % 3)
-    #     return h
+    def hamming_distance(self, target):
+        h = 0
+        for i in range(0,9):
+            if self.state[i] != target.state[i]:
+                h += 1
+        return h
 
-    def manhattan(self, target):
+    def manhattan_distance(self, target):
         h = 0
         for i in range(0, 9):
             target_num = target.state[i]
             index = self.state.index(target_num)
             h += 10*(abs(int(index / 3) - int(i / 3)) + abs(index % 3 - i % 3))
         return h
+
+    def euclidean_distance(self, target):
+        h = 0
+        for i in range(0, 9):
+            target_num = target.state[i]
+            index = self.state.index(target_num)
+            h += (int(index / 3) - int(i / 3)^2) + (index % 3 - i % 3)^2
+        return h
+
+    def miss_row_col(self,target):
+        h = 0
+        for i in range(0, 9):
+            target_num = target.state[i]
+            index = self.state.index(target_num)
+            if index/3 != i/3:
+                h += 1
+            if index%3 != i%3:
+                h += 1
+        return h
+
+    def pattern_distance(self, target):
+        return 0
 
     def manhattan2(self, target):
         h = 0
@@ -72,16 +91,16 @@ class Node:
             h += 10*(abs(index / 3 - i / 3) + abs(index % 3 - i % 3))
         return h
 
-    def kurtosis(self, target):
-        h = []
-        for i in range(0, 9):
-            target_num = target.state[i]
-            index = self.state.index(target_num)
-            h.append(abs(int(index / 3) - int(i / 3)) + abs(index % 3 - i % 3))
-        if len(h) == 0:
-            print("DEBUG")
-        r = skew(h, axis=0, bias=True)
-        return r
+    # def kurtosis(self, target):
+    #     h = []
+    #     for i in range(0, 9):
+    #         target_num = target.state[i]
+    #         index = self.state.index(target_num)
+    #         h.append(abs(int(index / 3) - int(i / 3)) + abs(index % 3 - i % 3))
+    #     if len(h) == 0:
+    #         print("DEBUG")
+    #     r = skew(h, axis=0, bias=True)
+    #     return r
 
     def hamming_distance(self, array):
         return 0

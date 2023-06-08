@@ -2,8 +2,8 @@ from algorithm import Algorithm
 
 
 class DFS(Algorithm):
-    @staticmethod
-    def alogrithm_func(start_node, target_node):
+
+    def algorithm_func(self, start_node, target_node):
         frontier = [start_node]
         visited = set()
         while frontier:

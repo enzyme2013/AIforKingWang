@@ -1,7 +1,21 @@
 # AIforKingWang
 
+# Search Problem 
 
-# 8 Puzzle Problem
-[ 1 2 3 ] 
-[ 4 0 5 ]
-[ 6 7 8 ]
+1. 是否可解
+- [ ] 可解判断
+2. 非启发式搜索
+  - [ ] dfs
+  - [x] bfs
+  - [ ] 回溯法
+3. 启发式搜索
+ - [x] hanmming distance
+ - [x] manhattan distance
+ - [x] euclidean distance
+ - [x] missed cols and rows
+ - [ ] linear conflict
+ - [ ] gaschnig heruistic
+ - [ ] pattern database
+4. benchmark
+ - [ ] benchmark
+ - [ ] conclusion
