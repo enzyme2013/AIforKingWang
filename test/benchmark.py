@@ -13,8 +13,8 @@ def test_solvers(solvers):
     r = []
     for alg in solvers:
         r.append(test_solver(alg, start_state, end_state))
-    if min(r) < 50:
-        print(start_state)
+    # if min(r) < 50:
+    #     print(start_state)
     return r
 
 

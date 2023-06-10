@@ -6,6 +6,8 @@ import thorpy as tp
 from game.gameconsts import SCREEN_WIDTH, SCREEN_HEIGHT
 
 clock = pygame.time.Clock()
+
+
 class Game:
     state = None
     screen = None
@@ -14,14 +16,12 @@ class Game:
         state = None
         self.__initGames()
 
-
     def __initGames(self):
         pygame.init()
         screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
     def refresh_game(self):
         pass
-
 
     def start(self):
         playing = True
@@ -33,10 +33,7 @@ class Game:
                 if e.type == pygame.QUIT:
                     playing = False
                 else:
-                    ... #do your stuff with events
+                    ...  # do your stuff with events
             self.refresh_game()
             pygame.display.flip()
         pygame.quit()
-
-
-
