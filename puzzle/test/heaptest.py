@@ -2,6 +2,9 @@
 # stack - FIFO - BFS -- array.pop(0)
 import numpy as np
 
+from puzzle.algorithm.puzzlesolver import is_solvable, is_solvable_str
+from puzzle.algorithm.utils import get_inv_count_str
+
 a = [1, 2, 3, 4, 5]
 print(a)
 
@@ -21,3 +24,8 @@ _str = "1234567"
 a = list(_str)
 print(a)
 print(list(map(int,list(_str))))
+
+print(get_inv_count_str("123456780"))
+print(get_inv_count_str("456870132"))
+
+print(is_solvable_str("806541372","12345680"))
