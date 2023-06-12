@@ -16,3 +16,8 @@ index = np.array(range(9))
 for x , y in enumerate(a):
     index[y] = x
 print(index)
+
+_str = "1234567"
+a = list(_str)
+print(a)
+print(list(map(int,list(_str))))

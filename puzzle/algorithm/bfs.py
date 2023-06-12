@@ -1,4 +1,4 @@
-from algorithm import PuzzleSolver, utils
+from puzzle.algorithm import PuzzleSolver
 
 
 class BFS(PuzzleSolver):

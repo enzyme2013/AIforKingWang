@@ -1,4 +1,4 @@
-from algorithm import PuzzleSolver
+from puzzle.algorithm import PuzzleSolver
 
 
 def hamming_distance(node, target):
@@ -98,15 +98,29 @@ def linear_conflicts(node, target, size=3):
     return res
 
 
-def pattern_distance(self, target):
-    return 0
+pattern_database = dict()
 
 
-def manhattan2(self, target):
+def pattern_distance(node, target):
+    # p = globals()['pattern_database']
+    if len(pattern_database) == 0:
+        with open('database.txt', 'r') as file:
+            lines = file.readlines()
+            for line in lines:
+                if len(line) > 0:
+                    state, steps = line.split(",")
+                    pattern_database[state] = int(steps)
+    _str = "".join(str(t) for t in node.state)
+    if _str in pattern_database:
+        return pattern_database[_str]
+    return 31
+
+
+def manhattan2(node, target):
     h = 0
     for i in range(0, 9):
         target_num = target.state[i]
-        index = self.state.index(target_num)
+        index = node.state.index(target_num)
         h += 10 * (abs(index / 3 - i / 3) + abs(index % 3 - i % 3))
     return h
 
@@ -114,13 +128,13 @@ def manhattan2(self, target):
 def heuristic(algorithm_type, cur_node, target_node):
     neighbors = cur_node.neighbors()
     if algorithm_type == 1:
-        sorted_list = sorted(neighbors, key=lambda neighbor: hamming_distance(neighbor,target_node))
+        sorted_list = sorted(neighbors, key=lambda neighbor: hamming_distance(neighbor, target_node))
     elif algorithm_type == 2:
-        sorted_list = sorted(neighbors, key=lambda neighbor: manhattan_distance(neighbor,target_node))
+        sorted_list = sorted(neighbors, key=lambda neighbor: manhattan_distance(neighbor, target_node))
     elif algorithm_type == 3:
-        sorted_list = sorted(neighbors, key=lambda neighbor: euclidean_distance(neighbor,target_node))
+        sorted_list = sorted(neighbors, key=lambda neighbor: euclidean_distance(neighbor, target_node))
     elif algorithm_type == 4:
-        sorted_list = sorted(neighbors, key=lambda neighbor: miss_row_col(neighbor,target_node))
+        sorted_list = sorted(neighbors, key=lambda neighbor: miss_row_col(neighbor, target_node))
     elif algorithm_type == 5:
         sorted_list = sorted(neighbors, key=lambda neighbor: gaschnig_heuristics(neighbor, target_node))
     elif algorithm_type == 6:
@@ -128,7 +142,7 @@ def heuristic(algorithm_type, cur_node, target_node):
     elif algorithm_type == 7:
         sorted_list = sorted(neighbors, key=lambda neighbor: pattern_distance(neighbor, target_node))
     else:
-        sorted_list = sorted(neighbors, key=lambda neighbor: manhattan_distance(neighbor,target_node))
+        sorted_list = sorted(neighbors, key=lambda neighbor: manhattan_distance(neighbor, target_node))
     sorted_list.reverse()
     return sorted_list
 
@@ -139,7 +153,7 @@ class AStar(PuzzleSolver):
     def __int__(self):
         super()
 
-    def set_type(self,alg_type):
+    def set_type(self, alg_type):
         self.algorithm_type = alg_type
 
     def algorithm_func(self, start_node, target_node):

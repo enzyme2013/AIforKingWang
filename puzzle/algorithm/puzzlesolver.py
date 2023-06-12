@@ -1,5 +1,5 @@
-from algorithm import utils
-from algorithm.node import Node
+from puzzle.algorithm import utils
+from puzzle.algorithm.node import Node
 
 
 class PuzzleSolver:
@@ -9,6 +9,8 @@ class PuzzleSolver:
         else:
             start_node = Node(start_state)
         target_node = Node(target_state)
+        if tuple(start_state) == tuple(target_state):
+            return None
         lastNode = self.algorithm_func(start_node, target_node)
         paths = [lastNode]
         while lastNode.parent:

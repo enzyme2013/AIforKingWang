@@ -1,7 +1,6 @@
 """Minigame example using some thorpy elements and coupling them with user input."""
 
-import pygame, random
-import thorpy as tp
+import pygame
 
 from game.gameconsts import SCREEN_WIDTH, SCREEN_HEIGHT
 

@@ -1,10 +1,10 @@
-from algorithm import AStar
-from algorithm.utils import random_state
+from puzzle.algorithm import AStar, BFS
+from puzzle.algorithm.utils import random_state
 
 
 def test_solver(alg, start_state, end_state):
-    paths = alg.solve(start_state, end_state)
-    return len(paths)
+    paths = alg.solve(end_state,start_state)
+    return len(paths)-1
 
 
 def test_solvers(solvers):
@@ -18,6 +18,11 @@ def test_solvers(solvers):
     return r
 
 
+def str_2_state(_str):
+    return list(map(int, list(_str)))
+    # return list(map(int,list(_str)))
+
+
 def gen_AStar(alg_type):
     astar = AStar()
     astar.set_type(alg_type)
@@ -25,10 +30,14 @@ def gen_AStar(alg_type):
 
 
 # solvers = [gen_AStar(1), gen_AStar(2), gen_AStar(3), gen_AStar(4), gen_AStar(5), gen_AStar(6)]
-solvers = [gen_AStar(1), gen_AStar(2), gen_AStar(4), gen_AStar(5), gen_AStar(6)]
+# solvers = [BFS(), gen_AStar(2), gen_AStar(4), gen_AStar(5), gen_AStar(6), gen_AStar(7)]
+solvers = [gen_AStar(7)]
 for i in range(20):
     r = test_solvers(solvers)
     print(r)
+
+r = test_solver(gen_AStar(7), str_2_state("412053786"), str_2_state("123456780"))
+print(r)
 
 # [41798, 1742, 140222, 46]
 # [84763, 1953, 113211, 1433]

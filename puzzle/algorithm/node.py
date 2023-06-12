@@ -5,11 +5,12 @@ import numpy as np
 def neighbors(state):
     zero_index = state.index(0)
     adjusted = []
+    adjusted = []
     if zero_index - 3 >= 0:
         adjusted.append(zero_index - 3)
     if zero_index + 3 < 9:
         adjusted.append(zero_index + 3)
-    if int((zero_index - 1) / 3) == int(zero_index / 3):
+    if zero_index > 0 and int((zero_index - 1) / 3) == int(zero_index / 3):
         adjusted.append(zero_index - 1)
     if int((zero_index + 1) / 3) == int(zero_index / 3):
         adjusted.append(zero_index + 1)
@@ -26,7 +27,7 @@ class Node:
     parent = None
     state = []
     g = 0
-    h = 0
+    # h = 0
 
     # children = []
 
@@ -40,10 +41,15 @@ class Node:
         _list = neighbors(self.state)
         result = []
         for st in _list:
-            n = Node(st)
-            n.parent = self
-            n.g = self.g + 1
-            result.append(n)
+            is_parent = False
+            if self.parent:
+                if tuple(self.parent.state) == tuple(st):
+                    is_parent = True
+            if not is_parent:
+                n = Node(st)
+                n.parent = self
+                n.g = self.g + 1
+                result.append(n)
         return result
 
 
