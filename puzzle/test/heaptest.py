@@ -29,3 +29,4 @@ print(get_inv_count_str("123456780"))
 print(get_inv_count_str("456870132"))
 
 print(is_solvable_str("806541372","12345680"))
+print(is_solvable_str("123456870","12345680"))

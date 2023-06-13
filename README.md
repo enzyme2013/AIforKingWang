@@ -3,7 +3,7 @@
 # Search Problem 
 
 1. 是否可解
-- [ ] 可解判断
+- [x] 可解判断
 2. 非启发式搜索
   - [x] dfs
   - [x] bfs
@@ -15,7 +15,10 @@
  - [x] missed cols and rows
  - [x] linear conflict
  - [x] gaschnig heruistic
- - [ ] pattern database
+ - [x] pattern database
 4. benchmark
- - [ ] benchmark
+ - [x] benchmark
  - [ ] conclusion
+
+# Cat Classify
+1. ACC 98%
