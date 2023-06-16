@@ -39,3 +39,6 @@ class PuzzleSolver:
 
     def algorithm_func(self, start_node, target_node):
         return target_node
+
+
+# print(is_solvable_str("834267501","123456780"))

@@ -1,7 +1,6 @@
 import numpy as np
 
 
-
 def neighbors(state):
     zero_index = state.index(0)
     adjusted = []
@@ -27,6 +26,7 @@ class Node:
     parent = None
     state = []
     g = 0
+
     # h = 0
 
     # children = []
@@ -51,7 +51,6 @@ class Node:
                 n.g = self.g + 1
                 result.append(n)
         return result
-
 
     # def kurtosis(self, target):
     #     h = []

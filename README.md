@@ -7,7 +7,6 @@
 2. 非启发式搜索
   - [x] dfs
   - [x] bfs
-  - [ ] 回溯法
 3. 启发式搜索
  - [x] hanmming distance
  - [x] manhattan distance
@@ -18,7 +17,7 @@
  - [x] pattern database
 4. benchmark
  - [x] benchmark
- - [ ] conclusion
+ - [x] conclusion
 
 # Cat Classify
-1. ACC 98%
+- [x] ResNet50
