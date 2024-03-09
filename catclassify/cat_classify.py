@@ -1,14 +1,14 @@
 import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+import os
 import pylab
 import torch as torch
 import torch.nn as nn
 import torch.optim as optim
-from torchvision import models, transforms
-from torch.utils.data import Dataset, DataLoader
-import os
-import numpy as np
 from PIL import Image
-import matplotlib.pyplot as plt
+from torch.utils.data import Dataset, DataLoader
+from torchvision import models, transforms
 
 # 数据准备
 data_dir = './catdata/cat_12_train/'
@@ -29,7 +29,7 @@ data_transform = transforms.Compose([
     transforms.Resize((img_width, img_height)),
     transforms.ToTensor(),
     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
-    # transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+    transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
 ])
 
 model = models.resnet50()
